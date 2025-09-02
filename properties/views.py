@@ -18,3 +18,19 @@ def property_list(request):
     property_data = [model_to_dict(prop) for prop in properties]
 
     return JsonResponse({'data': property_data})
+
+def property_list(request):
+    """
+    An API endpoint that returns a list of all properties in JSON format,
+    using low-level caching and logging cache metrics.
+    """
+    # Use the new utility function to get the properties
+    properties = get_all_properties()
+    
+    get_redis_cache_metrics()
+    
+    # Convert queryset of model instances to a list of dictionaries
+    property_data = [model_to_dict(p) for p in properties]
+    
+    return JsonResponse({'data': property_data})
+
