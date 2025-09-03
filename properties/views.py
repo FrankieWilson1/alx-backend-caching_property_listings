@@ -31,6 +31,8 @@ def property_list(request):
     
     # Convert queryset of model instances to a list of dictionaries
     property_data = [model_to_dict(p) for p in properties]
-    
+
+    # logger.error("Error fetching properties")
+
     return JsonResponse({'data': property_data})
 
