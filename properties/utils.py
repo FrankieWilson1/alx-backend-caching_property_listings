@@ -54,6 +54,7 @@ def get_redis_cache_metrics():
         
         return metrics
 
+    # logger.error("Error fetching Redis metrics")
     except Exception as e:
         print(f"Error fetching Redis metrics: {e}")
         return {}
